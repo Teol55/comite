@@ -1,0 +1,20 @@
+<html lang = "en" > <head> <meta name = "google-signin-scope" content = "profil email" > <meta name = "google-signin-client_id" content = "YOUR_CLIENT_ID.apps.googleusercontent.com " > <script src = "https://apis.google.com/js/platform.js" async defer >
+</ script> </ head> <body> <div class = "g-signin2" données onsuccess = "onSignIn " data-theme = " dark ">
+    </ div> <script> function onSignIn ( googleUser ) { // Données utiles pour vos scripts côté client: var profile = googleUser . getBasicProfile ();         console . log ( "ID:" + profil . getId ());
+// N'envoyez pas ceci directement à votre serveur!         console . log ( 'Nom complet:' + profil . getName ());         console . log ( 'Prénom:'
+
+
+
+
+
+
+        + profil . getGivenName ());
+        console . log ( 'Nom de famille:' + profil . getFamilyName ());         console . log ( "URL de l'image:" + profil . getImageUrl ());         console . log ( "Email:" + profil . getEmail ()); // Le jeton d'identification que vous devez transmettre à votre serveur : var id_token = googleUser . getAuthResponse ().
+
+
+
+
+        id_token ;
+        console . log ( "ID Token:" + id_token ); } </ script> </ body> </ html>
+
+

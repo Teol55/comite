@@ -1,3 +1,4 @@
+//@import "~google-auth-library";
 html,
 body {
     background-color: #565656;
@@ -11,5 +12,23 @@ body {
     top: 0;
     left: 0;
     z-index: 0;
+
+}
+.g-signin2{
+    position: relative;
+    top:70px;
+    left: 40px;
+    text-align: center;
+}
+.btn-google{
+
+    position: relative;
+    height: 300px;
+    width: 200px;
+    top: 120px;
+    left: 600px;
+    background-color: red;
+    text-align: center;
+    border-radius: 30px;
 
 }

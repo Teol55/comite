@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.3",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.2.*",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
@@ -28,6 +29,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.1",
+        "fzaninotto/faker": "^1.8",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
