@@ -18,11 +18,11 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    // .addEntry('article_show', './assets/js/article_show.js')
+    .addEntry('nav', './assets/js/nav.js')
     // .addEntry('admin_article_form', './assets/js/admin_article_form.js')
     // .addStyleEntry('account', './assets/css/account.scss')
     .addStyleEntry('login', './assets/css/login.scss')
-    //.addEntry('page1', './assets/js/page1.js')
+    .addStyleEntry('bouton', './assets/css/bouton.scss')
     //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

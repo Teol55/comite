@@ -38,6 +38,7 @@ class Request
      */
     private $user;
 
+
     public function __construct()
     {
         $this->ligneRequest = new ArrayCollection();
@@ -114,4 +115,5 @@ class Request
 
         return $this;
     }
+
 }

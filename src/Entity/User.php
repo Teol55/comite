@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -17,6 +18,23 @@ class User
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -32,21 +50,6 @@ class User
      * @ORM\Column(type="integer")
      */
     private $nbPersonne;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Request", mappedBy="user")
-     */
-    private $requests;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adresseEmail;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $roles = [];
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -68,6 +71,11 @@ class User
      */
     private $birthday;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Request", mappedBy="user")
+     */
+    private $requests;
+
     public function __construct()
     {
         $this->requests = new ArrayCollection();
@@ -76,6 +84,79 @@ class User
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getForname(): ?string
@@ -110,61 +191,6 @@ class User
     public function setNbPersonne(int $nbPersonne): self
     {
         $this->nbPersonne = $nbPersonne;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Request[]
-     */
-    public function getRequests(): Collection
-    {
-        return $this->requests;
-    }
-
-    public function addRequest(Request $request): self
-    {
-        if (!$this->requests->contains($request)) {
-            $this->requests[] = $request;
-            $request->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRequest(Request $request): self
-    {
-        if ($this->requests->contains($request)) {
-            $this->requests->removeElement($request);
-            // set the owning side to null (unless already changed)
-            if ($request->getUser() === $this) {
-                $request->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getAdresseEmail(): ?string
-    {
-        return $this->adresseEmail;
-    }
-
-    public function setAdresseEmail(string $adresseEmail): self
-    {
-        $this->adresseEmail = $adresseEmail;
-
-        return $this;
-    }
-
-    public function getRoles(): ?array
-    {
-        return $this->roles;
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
 
         return $this;
     }
@@ -213,6 +239,37 @@ class User
     public function setBirthday(?\DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Request[]
+     */
+    public function getRequests(): Collection
+    {
+        return $this->requests;
+    }
+
+    public function addRequest(Request $request): self
+    {
+        if (!$this->requests->contains($request)) {
+            $this->requests[] = $request;
+            $request->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRequest(Request $request): self
+    {
+        if ($this->requests->contains($request)) {
+            $this->requests->removeElement($request);
+            // set the owning side to null (unless already changed)
+            if ($request->getUser() === $this) {
+                $request->setUser(null);
+            }
+        }
 
         return $this;
     }

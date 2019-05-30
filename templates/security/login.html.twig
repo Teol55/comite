@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}CE Battants{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name = "google-signin-client_id" content = "654323288425-ospu1a36l7o0mlhv8vp5udd6t5fi0h09.apps.googleusercontent.com">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('login') }}
+    {% endblock %}
+</head>
+
+
+<body>
+
+<div class="particles-js" id="particles-js"><div class="btn-google col-lg-2 offset-lg-1">  <h1>CE ESSILOR BATTANTS</h1><a href="{{path('connect_google') }}">lien vers google account</a></div></div>
+{% block body %}
+
+
+
+
+
+
+
+{% endblock %}
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('app') }}
+
+
+{% endblock %}
+</body>
+</html>
