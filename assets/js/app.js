@@ -11,7 +11,7 @@ import '../css/app.scss';
 import $ from 'jquery';
 import 'bootstrap'; // adds functions to jQuery
 // import 'google-auth-library/build/src/auth/oauth2client';
-import 'particles.js'
+
 // import 'particles';
 // uncomment if you have legacy code that needs global variables
 //global.$ = $;
@@ -26,7 +26,3 @@ import 'particles.js'
 //         .find('.custom-file-label')
 //         .html(inputFile.files[0].name);
 // });
-/* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-particlesJS.load('particles-js', 'build/particles.json', function() {
-    console.log('callback - particles..min.js config loaded');
-});

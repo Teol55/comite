@@ -1,0 +1,31 @@
+
+/*header*/
+
+
+.header {
+
+  background-color:transparent;
+  color: #eee;
+  position: fixed;
+  z-index:3;
+  left:0;
+  right: 0;
+  height: 66px;
+}
+
+.header a {
+  color: #fff;
+}
+.header .logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0 25px;
+  float: left;
+  color: black;
+  z-index: 3;
+}
+.header img{
+  margin-top: 5px;
+  height:50px;
+  width: 50px;
+}

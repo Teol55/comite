@@ -21,7 +21,7 @@ Encore
     .addEntry('nav', './assets/js/nav.js')
     // .addEntry('admin_article_form', './assets/js/admin_article_form.js')
     // .addStyleEntry('account', './assets/css/account.scss')
-    .addStyleEntry('login', './assets/css/login.scss')
+    .addEntry('login', './assets/js/login.js')
     .addStyleEntry('bouton', './assets/css/bouton.scss')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -56,10 +56,10 @@ Encore
     .enableSassLoader()
     // .enablePostCssLoader()
 
-    // .copyFiles({
-    //     from: './assets/images',
-    //     to: 'images/[path][name].[hash:8].[ext]'
-    // })
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]'
+    })
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

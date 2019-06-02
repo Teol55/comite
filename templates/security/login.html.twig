@@ -14,7 +14,20 @@
 
 <body>
 
-<div class="particles-js" id="particles-js"><div class="btn-google col-lg-2 offset-lg-1">  <h1>CE ESSILOR BATTANTS</h1><a href="{{path('connect_google') }}">lien vers google account</a></div></div>
+<div class="particles-js" id="particles-js">
+    <div class="container">
+<div class="row justify-content-center">
+
+    <div class="justify-content-center login_part col-lg-3">  <h1>CE ESSILOR BATTANTS</h1><br> <a class="btn btn-block btn-social btn-google" href="{{path('connect_google') }}"><span class="fa fa-google"></span>Connexion</a>
+    </br> {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div></div>
+    </div></div>
+</body>
 {% block body %}
 
 
@@ -26,6 +39,7 @@
 {% endblock %}
 {% block javascripts %}
 
+    {{ encore_entry_script_tags('login') }}
     {{ encore_entry_script_tags('app') }}
 
 

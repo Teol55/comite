@@ -7,14 +7,21 @@
 {% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offre-img"><img class="img-fluid" src="{{ asset('build/images/fairground.jpg') }}">
 
-<div class="example-wrapper">
-    <h1>Hello HomePAGE</h1>
+            </div>
+            <div class="col-lg-2 recduction-img"><img class="img-fluid" src="{{ asset('build/images/ten-percent-off.png') }}"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ticket-img"><img class="img-fluid" src="{{ asset('build/images/tickets.jpg') }}"> </div>
+            <div class="col-lg-4 pvCe-img"><img class="img-fluid" src="{{ asset('build/images/pen.jpg') }}"></div>
+            <div class="col-lg-4 news-letter"><img class="img-fluid" src="{{ asset('build/images/e-mail.jpg') }}"></div>
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/comiteEntreprise/src/Controller/ComiteController.php'|file_link(0) }}">src/Controller/ComiteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/comiteEntreprise/templates/comite/index.html.twig'|file_link(0) }}">templates/comite/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+
+    </div>
+
 {% endblock %}
