@@ -19,6 +19,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('nav', './assets/js/nav.js')
+
     // .addEntry('admin_article_form', './assets/js/admin_article_form.js')
     // .addStyleEntry('account', './assets/css/account.scss')
     .addEntry('login', './assets/js/login.js')

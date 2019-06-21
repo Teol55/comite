@@ -6,6 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * Class ComiteController
  * @package App\Controller
@@ -30,5 +32,13 @@ class ComiteController extends AbstractController
         return $this->render('comite/contact.html.twig', [
             'controller_name' => 'ComiteController',
         ]);
+    }
+    /**
+     * @Route("/articles/{slug}",name="app_articles")
+     */
+    public function show($slug)
+    {
+        return $this->render('comite/show.html.twig', [
+                'title' => (str_replace('-', ' ', $slug)),]);
     }
 }
