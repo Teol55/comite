@@ -1,7 +1,8 @@
 body {
-  background-color: #565656;
+  background-color: #3498db;
   margin: 0;
   padding: 0;
+  overflow-y: hidden;
 }
 .particles-js
 {
@@ -15,7 +16,7 @@ body {
   position: relative;
   height: 300px;
   width: 200px;
-  top: 620px;
+  top: 500px;
   //left: 600px;
   background-color:snow;
   text-align: center;
