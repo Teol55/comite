@@ -5,19 +5,28 @@
 .carousel{
 
  height: 100%;
- padding: 10px;
- margin: 20px;
+ padding-top: 10px;
+ margin-top: 20px;
+ z-index: 0;
 
- .carousel-inner {
+    &-inner {
+     height: 100%;
+      }
+    &-item {
+     height: 100%;
+     }
+ &-caption h1{
+ color: black;
+
+   }
+
+
+
+ &-item img {
   height: 100%;
-
-  .carousel-item {
-   height: 100%;
-  }
  }
 
- .carousel-item img {
-  height: 100%;
- }
-
+}
+.homepage-img_bas{
+ z-index: -1;
 }
