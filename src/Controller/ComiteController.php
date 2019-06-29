@@ -41,4 +41,34 @@ class ComiteController extends AbstractController
         return $this->render('comite/show.html.twig', [
                 'title' => (str_replace('-', ' ', $slug)),]);
     }
+    /**
+     * @Route("/billetterie",name="app_billetterie")
+     */
+    public function Ticket()
+    {
+        return $this->render('comite/ticket.html.twig', [
+            'title' => 'Billetterie Battants'
+            ]);
+    }
+    /**
+     * @Route("/PvCSE",name="app_PvCSE")
+     */
+    public function PvCE()
+    {
+        return $this->render('comite/PvCSE.html.twig', [
+            'title' => 'PV CSE'
+        ]);
+    }
+    /**
+     * @Route("/partenaires",name="app_partenaire")
+     */
+    public function partenaire ()
+    {
+        return $this->render('comite/partenaire.html.twig', [
+            'title' => 'Nos Partenaires'
+        ]);
+    }
+
 }
+
+

@@ -28,5 +28,11 @@
 
 }
 .homepage-img_bas{
- z-index: -1;
+ z-index: 0;
+}
+.carousel-caption{
+ z-index: 0;
+}
+.homepage-img_bas a{
+ z-index: 3;
 }
