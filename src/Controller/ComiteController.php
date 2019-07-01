@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TicketRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,11 +45,12 @@ class ComiteController extends AbstractController
     /**
      * @Route("/billetterie",name="app_billetterie")
      */
-    public function Ticket()
+    public function Ticket(TicketRepository $repository)
     {
+        $tickets= $repository->findAll();
         return $this->render('comite/ticket.html.twig', [
-            'title' => 'Billetterie Battants'
-            ]);
+            'title' => 'Billetterie Battants',
+            'tickets'=> $tickets ,]);
     }
     /**
      * @Route("/PvCSE",name="app_PvCSE")

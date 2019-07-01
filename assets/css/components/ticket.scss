@@ -1,0 +1,35 @@
+.ticket{
+
+  &__offer {
+
+    padding-top: 20px;
+
+    & img {
+      background-color: whitesmoke;
+    height: 300px;
+    width: 300px;
+    }
+    &__title{
+      position: relative;
+      top:-280px;
+      left: 80px;
+
+        & h4{
+          color: black;
+        }
+    }
+    &__circle{
+      padding-top: 10px;
+      position: relative;
+      top: -150px;
+      left: 100px;
+      font-weight: bold;
+      height: 100px;
+      width: 100px;
+      border-radius: 100%;
+      text-align: center;
+      background-color:rgba(230, 126, 34,0.8) ;
+    }
+
+}
+}
