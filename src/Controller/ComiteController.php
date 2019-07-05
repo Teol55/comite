@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\TicketRepository;
+use App\Repository\ToolRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -66,8 +67,19 @@ class ComiteController extends AbstractController
      */
     public function partenaire ()
     {
-        return $this->render('comite/partenaire.html.twig', [
+        return $this->render('comite/partner.html.twig', [
             'title' => 'Nos Partenaires'
+        ]);
+    }
+    /**
+     * @Route("/outillage",name="app_tool")
+     */
+    public function tool (ToolRepository $repository)
+    {
+        $tools=$repository->findAll();
+        return $this->render('comite/tool.html.twig', [
+            'title'=> 'Location de Materiel',
+            'tools' => $tools
         ]);
     }
 

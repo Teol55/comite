@@ -4,8 +4,8 @@
 {% block body %}
 
     <div class="container">
-    <div class="row ticket__title">
-        <h1>{{ title }}</h1>
+    <div class="row justify-content-center ticket__title">
+        <div class="col-md-4 "><h1>{{ title }}</h1></div>
     </div>
 
         <div class="row">
@@ -14,8 +14,8 @@
           {% for ticket in tickets  %}
 
             <div class="col-md-4 ticket__offer">
-                <img class="img-fluid" src="{{ticket.image}}">
-                <div class="ticket__offer__title"><h4>{{ ticket.title }}</h4></div>
+                <img class="img-fluid" src="uploads/ticket_image/{{ticket.image}}">
+                <div class="ticket__offer__title" ><h4 style="color: darkgreen">{{ ticket.title }}</h4></div>
                 <div class="ticket__offer__circle">{{ ticket.priceCE }} €</div>
             </div>
             {% endfor %}

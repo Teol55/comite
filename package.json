@@ -23,6 +23,7 @@
         "google-auth-library": "^4.0.0",
         "npm": "^6.9.0",
         "particles.js": "^2.0.0",
+        "pdf.js": "^0.1.0",
         "popper.js": "^1.15.0"
     }
 }

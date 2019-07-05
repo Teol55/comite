@@ -3,20 +3,21 @@
   &__offer {
 
     padding-top: 20px;
+    height: 300px;
 
     & img {
-      background-color: whitesmoke;
-    height: 300px;
-    width: 300px;
+
+    height: 100%;
+    width:100%;
     }
     &__title{
       position: relative;
-      top:-280px;
+      top:-270px;
       left: 80px;
 
-        & h4{
-          color: black;
-        }
+        //& h4{
+        //  color: white;
+        //}
     }
     &__circle{
       padding-top: 10px;
