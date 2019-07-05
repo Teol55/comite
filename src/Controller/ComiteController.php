@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PartnerRepository;
 use App\Repository\TicketRepository;
 use App\Repository\ToolRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -65,10 +66,13 @@ class ComiteController extends AbstractController
     /**
      * @Route("/partenaires",name="app_partenaire")
      */
-    public function partenaire ()
+    public function partenaire (PartnerRepository $repository)
+
     {
+        $partners=$repository->findAll();
         return $this->render('comite/partner.html.twig', [
-            'title' => 'Nos Partenaires'
+            'title' => 'Nos Partenaires',
+            'partners'=> $partners,
         ]);
     }
     /**

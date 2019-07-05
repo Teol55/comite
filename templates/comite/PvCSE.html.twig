@@ -1,15 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ title }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('pvce') }}
+{% endblock %}
 
 {% block body %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img class="img-fluid" src="{{ asset('build/images/fairground.jpg') }}"></div>
-            <div class="col-md-6">
-            <h1>{{ title }}</h1>
-            </div>
+<div class="container">
+    <div class="row">
+        <img class="img-fluid" src="{{ asset('build/images/eiffel-tower.jpg') }}">
+    </div>
+            <div class="col-md-12">
+               <div id="app">
+  <div id="toolbar">
+    <div id="pager">
+     <button data-pager="prev">prev</button>
+     <button data-pager="next">next</button>
+    </div>
+    <div id="page-mode">
+     <label>Page Mode <input type="number" value="1" min="1"></label>
+    </div>
+  </div>
+  <div id="viewport" role="main"></div>
+</div>
+            </div></div>
 
-
+{% endblock %}
+            {% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/pdfjs-dist@latest/build/pdf.min.js"></script>
+                {{ encore_entry_script_tags('pvce') }}
+<script>
+  window.onload = () => {
+    initPDFViewer("{{ asset('uploads/pvce_Pdf/P.V. DE LA REUNION DU C.E. décembre 2018.pdf')}}")
+  }
+</script>
 {% endblock %}
