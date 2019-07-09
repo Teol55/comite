@@ -11,13 +11,17 @@
     width:100%;
     }
     &__title{
+      text-align: center;
+      background-color:whitesmoke ;
+      width: 150px;
+      border-radius: 20px;
       position: relative;
       top:-270px;
       left: 80px;
 
-        //& h4{
-        //  color: white;
-        //}
+        & h4{
+          color: black;
+        }
     }
     &__circle{
       padding-top: 10px;
