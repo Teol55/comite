@@ -1,10 +1,18 @@
+
+
 .head{
 
   &__title{
     background-color: purple;
     height: 200px;
-    text-align: center;
+    width: 100%;
     padding-top: 60px;
+    text-align: center;
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
 
 
   }
@@ -15,9 +23,18 @@
     background-color: purple;
     height: 2000px;
     text-align: center;
-  }
+    position: fixed;
+    top:200px;
+    left:0;
+    z-index: 5;
+
+
+}
   &__right{
     background-color: snow;
     height: 2000px;
+    width: 100%;
+    z-index: 2;
+    overflow: scroll;
   }
 }
