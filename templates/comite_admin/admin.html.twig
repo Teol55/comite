@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+{% block body %}
+    <div class="row head__title justify-content-center">
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">A propos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="row ">
+        <div class="col-md-2 body__left">
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" href="#">A propos</a>
+                <a class="nav-link" href="#">Services</a>
+                <a class="nav-link" href="#">Contact</a>
+            </nav>
+        </div>
+        <div class="col-md-10 body__right">
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

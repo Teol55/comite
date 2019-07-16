@@ -20,7 +20,10 @@
         <a href="{{ path('app_homepage') }}">Accueil</a>
         <a href="{{ path('app_tool') }}">Matériel</a>
         <a href="{{ path('app_logout') }}">Se Déconnecter</a>
-        <a href="{{ path('app_articles', {slug: 'lol'}) }}">Article</a>
+
+        {% if is_granted('ROLE_ADMIN_ARTICLE') %}
+            <a  href="{{ path('admin_article_new') }}">Admin</a>
+        {% endif %}
 
     </div>
         <div class="contact col-md-6">

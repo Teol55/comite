@@ -1,0 +1,23 @@
+.head{
+
+  &__title{
+    background-color: purple;
+    height: 200px;
+    text-align: center;
+    padding-top: 60px;
+
+
+  }
+
+}
+.body {
+  &__left {
+    background-color: purple;
+    height: 2000px;
+    text-align: center;
+  }
+  &__right{
+    background-color: snow;
+    height: 2000px;
+  }
+}

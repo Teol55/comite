@@ -1,4 +1,4 @@
-import '../css/layout/pvce.scss';
+import '../css/layout/_pvce.scss';
 (function() {
     let currentPageIndex = 0;
     let pageMode = 1;
