@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Request;
+use App\Form\ArticleFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,13 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ComiteAdminController extends AbstractController
 {
     /**
-     * @Route("/admin/article", name="admin_article_new")
+     * @Route("/article/new", name="admin_article_new")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
      */
     public function new(EntityManagerInterface $em)
-
     {
-        return $this->render('comite_admin/admin.html.twig', [
-            'controller_name' => 'ComiteController',
+
+        $form = $this->createForm(ArticleFormType::class);
+
+        return $this->render('article_admin/admin.html.twig', [
+            'adminForm' => $form->createView()
         ]);
     }
 
