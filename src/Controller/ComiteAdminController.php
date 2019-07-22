@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Article;
 
 use App\Form\ArticleFormType;
+use App\Repository\ArticleRepository;
+use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -40,6 +43,49 @@ class ComiteAdminController extends AbstractController
             'adminForm' => $form->createView()
         ]);
     }
+    /**
+     * @Route("/admin/article", name="admin_article_list")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
+     */
+    public function list(ArticleRepository $articleRepo)
+    {
+        $articles = $articleRepo->findAll();
 
+        return $this->render('article_admin/list.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/article/{id}/edit", name="admin_article_edit")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
+     */
+    public function edit(Article $article, Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(ArticleFormType::class, $article, [
+            'include_published_at' => true
+        ]);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+            $em->persist($article);
+            $em->flush();
+
+            $this->addFlash('success', 'Article Updated! Inaccuracies squashed!');
+
+            return $this->redirectToRoute('admin_article_edit', [
+                'id' => $article->getId(),
+            ]);
+        }
+
+        return $this->render('article_admin/edit.html.twig', [
+            'articleForm' => $form->createView(),
+            'article' => $article,
+        ]);
+    }
 }
 

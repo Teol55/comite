@@ -25,11 +25,18 @@
     </div>
     <div class="row ">
         <div class="col-md-2 body__left">
-            <nav class="nav flex-column">
-                <a class="nav-link" href="#">Accueil</a>
-                <a class="nav-link" href="#">A propos</a>
-                <a class="nav-link" href="#">Services</a>
-                <a class="nav-link" href="#">Contact</a>
+            <nav class="nav flex-column"><!-- menu simple -->
+
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Article</a>
+                    <div class="dropdown-menu"> <!-- bloc déroulant -->
+                        <a class="dropdown-item" href="{{ path('admin_article_new') }}">Nouveau</a>
+                        <a class="dropdown-item" href="{{ path('admin_article_list') }}">liste</a>
+                        <a class="dropdown-item" href="{{ path('admin_article_edit', {'id': 'x'}) }}">edit</a>
+                    </div>
+                    <a class="nav-link" href="#">A propos</a>
+                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="#">Contact</a>
+                </nav>
             </nav>
         </div>
         <div class="col-md-12 body__right">
