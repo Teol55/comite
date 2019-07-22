@@ -1,0 +1,14 @@
+{% extends 'comite_admin/admin.html.twig' %}
+
+
+
+
+
+{% block content_body %}
+<div class="admin_form">
+{{ form_start(adminForm) }}
+            {{ form_widget(adminForm) }}
+<button type="submit" class="btn btn-primary">Create!</button>
+{{ form_end(adminForm) }}
+</div>
+{% endblock %}
