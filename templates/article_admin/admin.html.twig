@@ -4,6 +4,7 @@
     {{ encore_entry_link_tags('admin') }}
 {% endblock %}
 {% block body %}
+    <div class="container">
     <div class="row head__title justify-content-center">
 
         <ul class="nav">
@@ -32,13 +33,15 @@
             </nav>
         </div>
         <div class="col-md-12 body__right">
-
+            <div class="admin_form">
             {{ form_start(adminForm) }}
             {{ form_widget(adminForm) }}
             <button type="submit" class="btn btn-primary">Create!</button>
             {{ form_end(adminForm) }}
+            </div>
 
         </div>
+    </div>
     </div>
 {% endblock %}
 
