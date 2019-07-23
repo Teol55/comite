@@ -35,10 +35,11 @@
     height: 2000px;
     width: 100%;
     z-index: 2;
-    overflow: scroll;
+    overflow: auto;
     position: fixed;
     top:200px;
-    left: 15%;
+    left:310px;
+
   }
 }
 .admin_form{
