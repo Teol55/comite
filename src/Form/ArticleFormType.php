@@ -20,7 +20,7 @@ class ArticleFormType extends AbstractType
                 'help'=> 'Titre de l\'article'
             ])
             ->add('slug')
-            ->add('content',TextareaType::class,[
+            ->add('content',null,[
                 'label' => 'Contenu de l\'article'
             ])
             ->add('publishedAt',DateType::class,[
