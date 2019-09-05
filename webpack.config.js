@@ -1,5 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
-
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
@@ -7,6 +7,10 @@ Encore
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
+    .addPlugin(new CopyWebpackPlugin([
+        // Copy the skins from tinymce to the build/skins directory
+        { from: 'node_modules/tinymce/skins', to: 'skins' },{ from: 'assets/images/particles.json', to:'images' },
+    ]))
 
     /*
      * ENTRY CONFIG

@@ -9,7 +9,7 @@
 
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Accueil</a>
+                <a class="nav-link active" href="{{ path('app_homepage') }}">Accueil</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">A propos</a>
@@ -25,19 +25,74 @@
     </div>
     <div class="row ">
         <div class="col-md-2 body__left">
-            <nav class="nav flex-column"><!-- menu simple -->
-
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Article</a>
-                    <div class="dropdown-menu"> <!-- bloc déroulant -->
-                        <a class="dropdown-item" href="{{ path('admin_article_new') }}">Nouveau</a>
-                        <a class="dropdown-item" href="{{ path('admin_article_list') }}">liste</a>
-                        <a class="dropdown-item" href="{{ path('admin_article_edit', {'id': 'x'}) }}">edit</a>
+            <div id="accordeon">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">CSE Batttants</h4>
                     </div>
-                    <a class="nav-link" href="#">A propos</a>
-                    <a class="nav-link" href="#">Services</a>
-                    <a class="nav-link" href="#">Contact</a>
-                </nav>
-            </nav>
+                    <div class="card-header">
+                        <a href="#article" class="card-link" data-toggle="collapse" data-parent="#accordeon">Articles</a>
+                    </div>
+                    <div class="collapse" id="article">
+                        <div class="list-group">
+                            <a class="list-group-item" href="{{ path('admin_article_new') }}"><span class="fa fa-newspaper-o"></span>Nouveau</a>
+                            <a class="list-group-item" href="{{ path('admin_article_list') }}"><span class="fa fa-pencil"></span> liste</a>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <a href="#billet" class="card-link" data-toggle="collapse" data-parent="#accordeon">Billets</a>
+                    </div>
+                    <div class="collapse" id="billet">
+                        <div class="list-group">
+                            <a class="list-group-item" href="{{ path('admin_article_new') }}"><span class="fa fa-newspaper-o"></span>Nouveau</a>
+                            <a class="list-group-item" href="{{ path('admin_article_list') }}"><span class="fa fa-pencil"></span> liste</a>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <a href="#tool" class="card-link" data-toggle="collapse" data-parent="#accordeon">Materiels</a>
+                    </div>
+                    <div class="collapse" id="tool">
+                        <div class="list-group">
+                            <a class="list-group-item" href="{{ path('admin_article_new') }}"><span class="fa fa-newspaper-o"></span>Nouveau</a>
+                            <a class="list-group-item" href="{{ path('admin_article_list') }}"><span class="fa fa-pencil"></span> liste</a>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <a href="#users" class="card-link" data-toggle="collapse" data-parent="#accordeon">Utilisateurs</a>
+                    </div>
+                    <div class="collapse" id="users">
+                        <div class="list-group">
+                            <a class="list-group-item" href="{{ path('admin_article_new') }}"><span class="fa fa-newspaper-o"></span>Nouveau</a>
+                            <a class="list-group-item" href="{{ path('admin_article_list') }}"><span class="fa fa-pencil"></span> liste</a>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <a href="#pv" class="card-link" data-toggle="collapse" data-parent="#accordeon">PVs de réunions</a>
+                    </div>
+                    <div class="collapse" id="pv">
+                        <div class="list-group">
+                            <a class="list-group-item" href="{{ path('admin_article_new') }}"><span class="fa fa-newspaper-o"></span>Nouveau</a>
+                            <a class="list-group-item" href="{{ path('admin_article_list') }}"><span class="fa fa-pencil"></span> liste</a>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <a href="#partnair" class="card-link" data-toggle="collapse" data-parent="#accordeon">Nos Partenaires</a>
+                    </div>
+                    <div class="collapse" id="partnair">
+                        <div class="list-group">
+                            <a class="list-group-item" href="{{ path('admin_article_new') }}"><span class="fa fa-newspaper-o"></span>Nouveau</a>
+                            <a class="list-group-item" href="{{ path('admin_article_list') }}"><span class="fa fa-pencil"></span> liste</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
         </div>
         <div class="col-md-10 body__right">
 

@@ -6,9 +6,14 @@
 
 {% block content_body %}
     <a href="{{ path('admin_article_new') }}" class="btn btn-primary pull-right">
-        Create <span class="fa fa-plus-circle"></span>
+        Nouveau  <span class="fa fa-plus-circle"></span>
     </a>
-    <h1>All Articles</h1>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h1>Tous les Articles </h1>
 
     <table class="table">
         <thead>
@@ -16,7 +21,7 @@
             <th>Title</th>
             <th>Author</th>
             <th>Published?</th>
-            <th>&nbsplol</th>
+            <th>lol</th>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +30,7 @@
                 <td>{{ article.title }}</td>
                 <td>{{ article.slug }}</td>
                 <td>
-{#                    <span class="fa fa-{{ article.isPublished ? 'check' : 'times' }}"></span>#}
+                    <span class="fa fa-{{ article.isPublished ? 'check' : 'times' }}"></span>
                 </td>
                 <td>
                     <a href="{{ path('admin_article_edit', {

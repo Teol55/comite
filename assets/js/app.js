@@ -26,3 +26,21 @@ import 'bootstrap'; // adds functions to jQuery
 //         .find('.custom-file-label')
 //         .html(inputFile.files[0].name);
 // });
+// Import TinyMCE
+import tinymce from 'tinymce/tinymce';
+
+// A theme is also required
+import 'tinymce/themes/silver';
+import 'tinymce/themes/mobile';
+
+// Any plugins you want to use has to be imported
+import 'tinymce/plugins/paste';
+import 'tinymce/plugins/link';
+
+// Initialize the app
+tinymce.init({
+    selector: 'textarea',
+
+
+    plugins: ['paste', 'link']
+});
