@@ -19,14 +19,18 @@ class ArticleFormType extends AbstractType
                 'label' =>'Titre de l\'article',
                 'help'=> 'Titre de l\'article'
             ])
-            ->add('slug')
+
             ->add('content',null,[
                 'label' => 'Contenu de l\'article'
             ])
             ->add('publishedAt',DateType::class,[
                  'label'=>'Date de Publication:',
                  'widget' => 'single_text',
-                        ]);
+                        ])
+            ->add('publishedEnd',DateType::class,[
+                'label'=>'Fin de Publication:',
+                'widget' => 'single_text',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

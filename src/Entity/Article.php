@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -23,6 +24,7 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
+     * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
 
@@ -40,6 +42,11 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageFilename;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $publishedEnd;
 
     public function getId(): ?int
     {
@@ -63,12 +70,7 @@ class Article
         return $this->slug;
     }
 
-    public function setSlug(?string $slug): self
-    {
-        $this->slug = $slug;
 
-        return $this;
-    }
 
     public function getContent(): ?string
     {
@@ -108,5 +110,17 @@ class Article
     public function isPublished(): bool
     {
         return $this->publishedAt !== null;
+    }
+
+    public function getPublishedEnd(): ?\DateTimeInterface
+    {
+        return $this->publishedEnd;
+    }
+
+    public function setPublishedEnd(\DateTimeInterface $publishedEnd): self
+    {
+        $this->publishedEnd = $publishedEnd;
+
+        return $this;
     }
 }

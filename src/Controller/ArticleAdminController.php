@@ -30,6 +30,7 @@ class ArticleAdminController extends AbstractController
 
             /** @var Article $article */
             $article=$form->getData();
+//            $article->setSlug(str_replace(' ','-',$article->getTitle()));
 
             $em->persist($article);
             $em->flush();
