@@ -41,7 +41,7 @@ class ArticleAdminController extends AbstractController
         }
 
         return $this->render('article_admin/new.html.twig', [
-            'adminForm' => $form->createView()
+            'articleForm' => $form->createView()
         ]);
     }
     /**
@@ -64,29 +64,27 @@ class ArticleAdminController extends AbstractController
      */
     public function edit(Article $article, Request $request, EntityManagerInterface $em)
     {
-        $form = $this->createForm(ArticleFormType::class, $article, [
-
-        ]);
-
+        $form = $this->createForm(ArticleFormType::class,$article);
         $form->handleRequest($request);
+
+
         if ($form->isSubmitted() && $form->isValid()) {
-
-
-
+            /** @var Article $article */
+            $article = $form->getData();
             $em->persist($article);
             $em->flush();
-
-            $this->addFlash('success', 'Article Updated! Inaccuracies squashed!');
-
+            $this->addFlash('success', 'L\'article a bien été modifié');
             return $this->redirectToRoute('admin_article_edit', [
                 'id' => $article->getId(),
             ]);
         }
 
         return $this->render('article_admin/edit.html.twig', [
-            'articleForm' => $form->createView(),
-            'article' => $article,
+            'articleForm' => $form->createView()
         ]);
     }
+
+
+
 }
 

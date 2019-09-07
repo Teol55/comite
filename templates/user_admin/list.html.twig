@@ -9,30 +9,28 @@
         Nouveau  <span class="fa fa-plus-circle"></span>
     </a>
 
-    <h1>Tous les Articles </h1>
+    <h1> Utilisateurs</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Titre</th>
-            <th>Date de Publication</th>
-            <th>Publier?</th>
-            <th>Fin de publication</th>
+            <th>Email</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Ayant droit</th>
             <th>Modifier</th>
         </tr>
         </thead>
         <tbody>
-        {% for article in articles %}
+        {% for user in users %}
             <tr>
-                <td>{{ article.title }}</td>
-                <td>{{ article.publishedAt|date('d/m/Y')  }}</td>
-                <td>
-                    <span class="fa fa-{{ article.isPublished ? 'check' : 'times' }}"></span>
-                </td>
-                <td>{{ article.publishedEnd|date('d/m/Y')  }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.surname }}</td>
+                <td>{{ user.forname  }}</td>
+                <td>{{ user.nbPersonne }}</td>
                 <td>
                     <a href="{{ path('admin_article_edit', {
-                        id: article.id
+                        id: user.id
                     }) }}">
                         <span class="fa fa-pencil"></span>
                     </a>
@@ -42,4 +40,3 @@
         </tbody>
     </table>
 {% endblock %}
-

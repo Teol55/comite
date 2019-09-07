@@ -1,8 +1,10 @@
 {% extends 'comite_admin/admin.html.twig' %}
 
 {% block content_body %}
-    <h1>Edit the Article! 🚀</h1>
-
+    <h1>Modification de l'article! 🚀</h1>
+    {{ include('article_admin/_form.html.twig', {
+        button_text: 'Modifier!'
+    }) }}
 
 
 {% endblock %}
