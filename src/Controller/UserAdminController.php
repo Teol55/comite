@@ -49,5 +49,31 @@ class UserAdminController extends AbstractController
 
 
 
-}
+        }
+
+    /**
+     * @Route("/admin/user/{id}/edit", name="admin_user_edit")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
+     */
+    public function edit(User $user, Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(UserFormType::class,$user);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var User $user */
+            $user = $form->getData();
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash('success', 'L\'utilisateur a bien été modifié');
+            return $this->redirectToRoute('admin_user_list', [
+                'id' => $user->getId(),
+            ]);
+        }
+
+        return $this->render('user_admin/edit.html.twig', [
+            'userForm' => $form->createView()
+        ]);
+    }
 }
