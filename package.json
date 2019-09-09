@@ -20,6 +20,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "autocomplete.js": "^0.37.0",
         "bootstrap-social": "^5.1.1",
         "google-auth-library": "^4.0.0",
         "npm": "^6.9.0",
