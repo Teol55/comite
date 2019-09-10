@@ -2,7 +2,8 @@
     {{ form_row(articleForm.title, {
         label: 'Titre de l\'article:'
     }) }}
-        {{ form_row(articleForm.content) }}
+    {{ form_row(articleForm.imageFile) }}
+    {{ form_row(articleForm.content) }}
     {{ form_row(articleForm.publishedAt) }}
     {{ form_row(articleForm.publishedEnd) }}
 <button type="submit" class="btn btn-primary">{{ button_text }}</button>
