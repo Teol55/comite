@@ -13,32 +13,21 @@
 
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    {% for article in articles %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index }}" {% if loop.first %}class="active"{% endif %}></li>
+                    {% endfor %}
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="{{ path('app_articles', {'slug': 'lol'}) }}" > <img class="d-block w-100" src="{{ asset('build/images/fairground.jpg') }}" alt="First slide"></a>
+
+                    {% for article in articles %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <a href="{{ path('app_articles', {'slug': article.slug} )}}" ><img class="d-block w-100" src="{{ asset(article.imagePath) }}" alt="Second slide"></a>
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>Billets Pour EUROPA PARK</h1>
-                            <p>Réserver vos Billets maintenant</p>
+                            <h1>{{article.title}}</h1>
+                                {{article.content|striptags}}
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <a href="{{ path('app_articles', {'slug': 'lol'}) }}" ><img class="d-block w-100" src="{{ asset('build/images/petanque.jpg') }}" alt="Second slide"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1>Concours de Pétanque</h1>
-                            <p>On fait une partie?</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{ path('app_articles', {'slug': 'lol'}) }}" ><img class="d-block w-100" src="{{ asset('build/images/eiffel-tower.jpg') }}" alt="Third slide"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1>Voyage à Paris</h1>
-                            <p>On va vous faire découvrir Paris</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

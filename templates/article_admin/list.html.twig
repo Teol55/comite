@@ -19,6 +19,7 @@
             <th>Publier?</th>
             <th>Fin de publication</th>
             <th>Modifier</th>
+            <th>Supprimer</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,13 @@
                         id: article.id
                     }) }}">
                         <span class="fa fa-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_article_delete', {
+                        id: article.id
+                    }) }}">
+                        <span class="fa fa-trash"></span>
                     </a>
                 </td>
             </tr>

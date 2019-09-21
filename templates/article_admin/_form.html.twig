@@ -2,7 +2,13 @@
     {{ form_row(articleForm.title, {
         label: 'Titre de l\'article:'
     }) }}
-    {{ form_row(articleForm.imageFile) }}
+    {{ form_row(articleForm.imageFile, {
+        label: 'Image pour l\'article',
+        attr: {
+
+            'placeholder': 'Select an article image'
+        }
+    }) }}
     {{ form_row(articleForm.content) }}
     {{ form_row(articleForm.publishedAt) }}
     {{ form_row(articleForm.publishedEnd) }}

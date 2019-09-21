@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\TicketRepository;
 use App\Repository\ToolRepository;
@@ -21,10 +22,11 @@ class ComiteController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function index()
+    public function index(ArticleRepository $articleRepos)
     {
+        $articles=$articleRepos->findAll();
         return $this->render('comite/index.html.twig', [
-            'controller_name' => 'ComiteController',
+            'articles' => $articles,
         ]);
     }
     /**

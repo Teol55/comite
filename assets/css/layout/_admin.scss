@@ -4,7 +4,7 @@
 
   &__title{
     background-color: purple;
-    height: 200px;
+    height: 150px;
     width: 100%;
     padding-top: 60px;
     text-align: center;
@@ -12,37 +12,46 @@
     position:fixed;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 0;
 
 
   }
 
 }
 .body {
+
+  &__admin{
+    position: fixed;
+    top:150px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: snow;
+  }
   &__left {
     background-color: purple;
-    height: 2000px;
+
     text-align: center;
-    position: fixed;
-    top:200px;
-    left:0;
-    z-index: 5;
+
+    z-index: 0;
 
 
 }
   &__right{
     background-color: snow;
-    height: 2000px;
-    width: 100%;
-    z-index: 2;
+    overflow:auto;
 
-    position: fixed;
-    top:200px;
-    left:310px;
+    height:79vh;
+  ;
+
+
+
+
 
   }
 }
 .admin_form{
-  padding-top: 30px;
-  padding-left: 60px;
+  //padding-top: 30px;
+  //padding-left: 60px;
 }

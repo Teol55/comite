@@ -117,6 +117,20 @@ class ArticleAdminController extends AbstractController
                 $uploadedFile->move($destination,
                     $newFilename);
         }
+    /**
+     * @Route("/admin/article/delete/{id}", name="admin_article_delete")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
+     */
+    public function delete(Article $article, Request $request, EntityManagerInterface $em)
+    {
+                /** @var Article $article */
+            $em->remove($article);
+            $em->flush();
+            $this->addFlash('success', 'L\'article a bien été supprimé');
+            return $this->redirectToRoute('admin_article_list', [
+                'id' => $article->getId(),
+            ]);
 
+    }
 }
 
