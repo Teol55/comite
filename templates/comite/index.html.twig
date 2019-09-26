@@ -21,7 +21,7 @@
 
                     {% for article in articles %}
                     <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <a href="{{ path('app_articles', {'slug': article.slug} )}}" ><img class="d-block w-100" src="{{ asset(article.imagePath) }}" alt="Second slide"></a>
+                        <a href="{{ path('app_articles', {'slug': article.slug} )}}" ><img class="d-block w-100" src="{{ uploaded_asset(article.imagePath) }}" alt="Second slide"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h1>{{article.title}}</h1>
                                 {{article.content|striptags}}

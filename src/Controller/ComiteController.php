@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\TicketRepository;
@@ -41,10 +42,10 @@ class ComiteController extends AbstractController
     /**
      * @Route("/articles/{slug}",name="app_articles")
      */
-    public function show($slug)
+    public function show(Article $article)
     {
         return $this->render('comite/show.html.twig', [
-                'title' => (str_replace('-', ' ', $slug)),]);
+                'article' => $article,]);
     }
     /**
      * @Route("/billetterie",name="app_billetterie")
