@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Service\UploaderHelper;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -132,5 +133,12 @@ class Article
     public function getImagePath()
     {
         return UploaderHelper::ARTICLE_IMAGE.'/'.$this->getImageFilename();
+    }
+    /**
+     * @return Collection|ArticleReference[]
+     */
+    public function getArticleReferences(): Collection
+    {
+        return $this->articleReferences;
     }
 }

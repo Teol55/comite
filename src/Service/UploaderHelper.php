@@ -15,6 +15,7 @@ use League\Flysystem\FileNotFoundException;
 class UploaderHelper
 {
     const ARTICLE_IMAGE = 'articles';
+    const ARTICLE_REFERENCE = 'article_reference';
 
     /**
      * @var RequestStackContext
@@ -29,23 +30,27 @@ class UploaderHelper
      */
     private $logger;
 
-    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext,LoggerInterface $logger)
+    private $publicAssetBaseUrl;
+    /**
+     * @var FilesystemInterface
+     */
+    private $privateFilesystem;
+
+
+    public function __construct(FilesystemInterface $publicUploadsFilesystem, RequestStackContext $requestStackContext,LoggerInterface $logger,string $uploadedAssetsBaseUrl,FilesystemInterface $privateUploadsFilesystem)
     {
 
+        $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;
         $this->requestStackContext = $requestStackContext;
         $this->filesystem = $publicUploadsFilesystem;
         $this->logger = $logger;
+        $this->privateFilesystem= $privateUploadsFilesystem;
     }
 
     public function uploadArticleImage(File $file,?string $existingFilename):string
     {
 
-
-        if ($file instanceof UploadedFile) {
-            $originalFilename = $file->getClientOriginalName();
-        } else {
-            $originalFilename = $file->getFilename();
-        }
+        $newFilename=$this->uploadFile($file,self::ARTICLE_IMAGE,true);
         if ($existingFilename) {
             try {
                 $result = $this->filesystem->delete(self::ARTICLE_IMAGE.'/'.$existingFilename);
@@ -57,10 +62,28 @@ class UploaderHelper
             }
         }
 
+        return  $newFilename;
+    }
+    public function getPublicPath(string $path): string
+    {
+        return $this->requestStackContext
+                ->getBasePath().$this->publicAssetBaseUrl.'/'.$path;
+    }
+
+    private function uploadFile(File $file, string $directory, bool $isPublic)
+    {
+        if ($file instanceof UploadedFile) {
+            $originalFilename = $file->getClientOriginalName();
+        } else {
+            $originalFilename = $file->getFilename();
+        }
         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
+
+        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+
         $stream = fopen($file->getPathname(), 'r');
-        $result=$this->filesystem->writeStream(
-            self::ARTICLE_IMAGE.'/'.$newFilename,
+        $result = $filesystem->writeStream(
+            $directory.'/'.$newFilename,
             $stream
         );
         if ($result === false) {
@@ -69,12 +92,10 @@ class UploaderHelper
         if (is_resource($stream)) {
             fclose($stream);
         }
-
-        return  $newFilename;
+        return $newFilename;
     }
-    public function getPublicPath(string $path): string
+    public function uploadArticleReference(File $file): string
     {
-        return $this->requestStackContext
-                ->getBasePath().'/uploads/'.$path;
+        return $this->uploadFile($file, self::ARTICLE_REFERENCE, false);
     }
 }

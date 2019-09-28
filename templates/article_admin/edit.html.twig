@@ -4,10 +4,27 @@
 
     <h1>Modification de l'article! 🚀</h1>
 
+    <hr>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3> Details</h3>
 
-    {{ include('article_admin/_form.html.twig', {
-        button_text: 'Modifier!'
-    }) }}
+            {{ include('article_admin/_form.html.twig', {
+                button_text: 'Modifier!'
+            }) }}
+        </div>
+        <div class="col-sm-4">
+            <h3>Documents</h3>
+            <form action="{{ path('admin_article_add_reference', {
+                id: article.id
+            }) }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="reference">
+                <button type="submit" class="btn btn-sm btn-primary">Télécharger</button>
+            </form>
+        </div>
+    </div>
+
+
 
 
 {% endblock %}
