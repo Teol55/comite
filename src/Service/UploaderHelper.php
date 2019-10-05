@@ -98,4 +98,22 @@ class UploaderHelper
     {
         return $this->uploadFile($file, self::ARTICLE_REFERENCE, false);
     }
+
+    public function readStream(string $path, bool $isPublic)
+    {
+        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+        $resource = $filesystem->readStream($path);
+        if ($resource === false) {
+            throw new \Exception(sprintf('Erreur d\'ouverture du fichier "%s"', $path));
+        }
+        return $resource;
+    }
+    public function deleteFile(string $path, bool $isPublic)
+    {
+        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+        $result= $filesystem->delete($path);
+        if ($result === false) {
+            throw new \Exception(sprintf('Erreur de suppression de fichier "%s"', $path));
+        }
+    }
 }

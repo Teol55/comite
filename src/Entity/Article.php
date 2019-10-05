@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Service\UploaderHelper;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -54,6 +55,18 @@ class Article
      * @Assert\NotBlank()
      */
     private $publishedEnd;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ArticleReference", mappedBy="article")
+     * @ORM\OrderBy({"position"="ASC"})
+     */
+    private $articleReferences;
+
+    public function __construct()
+    {
+
+        $this->articleReferences = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
