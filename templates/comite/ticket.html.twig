@@ -4,8 +4,8 @@
 {% block body %}
 
     <div class="container">
-    <div class="row justify-content-center ticket__title">
-        <div class="col-md-4 "><h1>{{ title }}</h1></div>
+    <div class="row justify-content-center site__title">
+        <h1>{{ title|upper }}</h1>
     </div>
 
         <div class="row">
@@ -14,7 +14,7 @@
           {% for ticket in tickets  %}
 
             <div class="col-md-4 ticket__offer">
-                <img class="img-fluid" src="uploads/ticket_image/{{ticket.image}}">
+                <img class="img-fluid" src="{{uploaded_asset(ticket.imagePath)}}">
                 <div class="ticket__offer__title" >  {{ ticket.title }}</div>
                 <div class="ticket__offer__circle"><br>{{ ticket.priceCE }} €</div>
             </div>

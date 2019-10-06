@@ -6,6 +6,7 @@
 @import './components/hompage';
 @import './components/ticket';
 @import './components/tool';
+@import './components/_show.scss';
 html {
 width: 100%;
 }
@@ -30,7 +31,27 @@ body {
     left: 40px;
     text-align: center;
 }
+.site{
 
+  &__title{
+    border-bottom: 3px solid snow;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  &__references{
+    padding-top: 3em;
+
+    &__title{
+      border-bottom: 2px solid snow;
+      padding-bottom: 1em;
+
+    }
+    &__lien{
+        padding-top:1em ;
+
+    }
+  }
+}
 
 /* Sortable */
 .sortable-ghost {

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Service\UploaderHelper;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +23,7 @@ class Ticket
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
@@ -110,5 +111,9 @@ class Ticket
         }
 
         return $this;
+    }
+    public function getImagePath()
+    {
+        return UploaderHelper::TICKET_IMAGE.'/'.$this->getImage();
     }
 }

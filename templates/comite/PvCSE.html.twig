@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ pvce.title }}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('pvce') }}
@@ -8,8 +8,11 @@
 {% block body %}
 
 <div class="container">
-
-            <div class="col-md-12">
+    <div class="site__title text-center">
+        <h1>{{ pvce.title }}</h1>
+    </div>
+    <div class="row">
+            <div class="col-sm-8">
                <div id="app">
   <div id="toolbar">
     <div id="pager">
@@ -23,7 +26,23 @@
   <div id="viewport" role="main"></div>
 
 </div>
-            </div></div>
+            </div>
+    <div class="col-sm-4 site__references">
+                <div class="site__references__title text-center">
+            <h3>PV de CSE</h3>
+
+                </div>
+        <div class="site__references__lien">
+        {% for pv in pvces %}
+            <a href="{{ path('app_PvCSE', {
+                id: pv.id
+            }) }}">
+                {{ pv.title}}
+            </a><br><br>
+        {%  endfor %}
+    </div>
+
+    </div></div>
 
 {% endblock %}
             {% block javascripts %}
@@ -32,7 +51,8 @@
                 {{ encore_entry_script_tags('pvce') }}
 <script>
   window.onload = () => {
-    initPDFViewer("{{ asset('uploads/pvce_Pdf/P.V. DE LA REUNION DU C.E. décembre 2018.pdf')}}")
+    {#initPDFViewer("{{ asset('uploads/pvce_Pdf/P.V. DE LA REUNION DU C.E. décembre 2018.pdf')}}")#}
+      initPDFViewer("{{uploaded_asset(pvce.pdfPath)}}")
   }
 </script>
 {% endblock %}

@@ -24,7 +24,7 @@
                         <a href="{{ path('app_articles', {'slug': article.slug} )}}" ><img class="d-block w-100" src="{{ uploaded_asset(article.imagePath) }}" alt="Second slide"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h1>{{article.title}}</h1>
-                                {{article.content|striptags}}
+
                         </div>
                     </div>
                     {% endfor %}
@@ -55,7 +55,9 @@
                 </div></div>
 
 
-            <div class="col-lg-4 homepage-img_bas"><a href="{{ path('app_PvCSE') }}"><img class="img-thumbnail" src="{{ asset('build/images/pen.jpg') }}"></a><div class="carousel-caption d-none d-md-block">
+            <div class="col-lg-4 homepage-img_bas"><a href="{{ path('app_PvCSE', {
+                    id: pvce.id
+                }) }}"><img class="img-thumbnail" src="{{ asset('build/images/pen.jpg') }}"></a><div class="carousel-caption d-none d-md-block">
                     <h1>PV de CE</h1>
 
                 </div></div>

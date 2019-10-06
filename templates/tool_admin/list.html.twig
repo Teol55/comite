@@ -23,8 +23,8 @@
         <tbody>
         {% for tool in tools %}
             <tr>
-                <td>{{ tool.name }}</td>
-                <td>{{ tool.description }}</td>
+                <td>{{ tool.name|upper }}</td>
+                <td>{{ tool.description|raw }}</td>
                 <td>{{ tool.price  }}€</td>
                 <td>
                     <a href="{{ path('admin_tool_edit', {

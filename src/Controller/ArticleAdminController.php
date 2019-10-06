@@ -44,8 +44,10 @@ class ArticleAdminController extends AbstractController
             $em->persist($article);
             $em->flush();
 
-            $this->addFlash('success','le document a bien été enregistré');
-            return $this->redirectToRoute('admin_article_list');
+            $this->addFlash('success','le document a bien été enregistré,vous pouvez ajouter des documents');
+            return $this->redirectToRoute('admin_article_edit', [
+                'id' => $article->getId(),
+            ]);
 
         }
 

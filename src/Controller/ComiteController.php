@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Pvce;
 use App\Repository\ArticleRepository;
 use App\Repository\PartnerRepository;
+use App\Repository\PvceRepository;
 use App\Repository\TicketRepository;
 use App\Repository\ToolRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -23,11 +25,13 @@ class ComiteController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function index(ArticleRepository $articleRepos)
+    public function index(ArticleRepository $articleRepos,PvceRepository $pvceRepository)
     {
+        $pvce=$pvceRepository->findOneBy([], ['id' => 'desc']);
         $articles=$articleRepos->findAll();
         return $this->render('comite/index.html.twig', [
             'articles' => $articles,
+            'pvce' => $pvce
         ]);
     }
     /**
@@ -57,13 +61,17 @@ class ComiteController extends AbstractController
             'title' => 'Billetterie Battants',
             'tickets'=> $tickets ,]);
     }
+
     /**
-     * @Route("/PvCSE",name="app_PvCSE")
+     * @Route("/PvCSE/{id}",name="app_PvCSE")
      */
-    public function PvCE()
+    public function PvCE(Pvce $pvce,PvceRepository $pvceRepository)
     {
+
+        $pvces=$pvceRepository->findAll();
         return $this->render('comite/PvCSE.html.twig', [
-            'title' => 'PV CSE'
+            'pvce'=> $pvce,
+            'pvces'=>$pvces,
         ]);
     }
     /**

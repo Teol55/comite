@@ -16,6 +16,8 @@ class UploaderHelper
 {
     const ARTICLE_IMAGE = 'articles';
     const ARTICLE_REFERENCE = 'article_reference';
+    const TICKET_IMAGE='tickets';
+    const PVCE_PDF='pvcses';
 
     /**
      * @var RequestStackContext
@@ -115,5 +117,39 @@ class UploaderHelper
         if ($result === false) {
             throw new \Exception(sprintf('Erreur de suppression de fichier "%s"', $path));
         }
+    }
+    public function uploadTicketImage(File $file,?string $existingFilename):string
+    {
+
+        $newFilename=$this->uploadFile($file,self::TICKET_IMAGE,true);
+        if ($existingFilename) {
+            try {
+                $result = $this->filesystem->delete(self::TICKET_IMAGE.'/'.$existingFilename);
+                if ($result === false) {
+                    throw new \Exception(sprintf('Impossible de supprimer le fichier "%s"', $existingFilename));
+                }
+            } catch (FileNotFoundException $e) {
+                $this->logger->alert(sprintf('Old uploaded file "%s" was missing when trying to delete', $existingFilename));
+            }
+        }
+
+        return  $newFilename;
+    }
+    public function uploadPvcePdf(File $file,?string $existingFilename):string
+    {
+
+        $newFilename=$this->uploadFile($file,self::PVCE_PDF,true);
+        if ($existingFilename) {
+            try {
+                $result = $this->filesystem->delete(self::PVCE_PDF.'/'.$existingFilename);
+                if ($result === false) {
+                    throw new \Exception(sprintf('Impossible de supprimer le fichier "%s"', $existingFilename));
+                }
+            } catch (FileNotFoundException $e) {
+                $this->logger->alert(sprintf('Old uploaded file "%s" was missing when trying to delete', $existingFilename));
+            }
+        }
+
+        return  $newFilename;
     }
 }
