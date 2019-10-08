@@ -76,4 +76,19 @@ class UserAdminController extends AbstractController
             'userForm' => $form->createView()
         ]);
     }
+    /**
+     * @Route("/admin/user/delete/{id}", name="admin_user_delete")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
+     */
+    public function delete(User $user, Request $request, EntityManagerInterface $em)
+    {
+        /** @var User $user*/
+        $em->remove($user);
+        $em->flush();
+        $this->addFlash('success', 'L\'utilisateur a bien été supprimé');
+        return $this->redirectToRoute('admin_user_list', [
+
+        ]);
+
+    }
 }

@@ -20,7 +20,7 @@
             {% for tool in tools  %}
 
                 <tr>
-                    <th scope="row">{{ tool.name }}</th>
+                    <th scope="row">{{ tool.name|upper }}</th>
                     <td>{{ tool.price }}€</td>
                 </tr>
             {% endfor %}

@@ -5,40 +5,41 @@
 
 
 {% block content_body %}
-    <a href="{{ path('admin_article_new') }}" class="btn btn-primary pull-right">
+    <a href="{{ path('admin_partner_new') }}" class="btn btn-primary pull-right">
         Nouveau  <span class="fa fa-plus-circle"></span>
     </a>
 
-    <h1> Utilisateurs</h1>
+    <h1>Tous les Partenaires </h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Email</th>
             <th>Nom</th>
-            <th>Prénom</th>
-            <th>Ayant droit</th>
+            <th>Déscription</th>
+            <th>Type de réduction</th>
             <th>Modifier</th>
             <th>Supprimer</th>
         </tr>
         </thead>
         <tbody>
-        {% for user in users %}
+        {% for partner in partners %}
             <tr>
-                <td>{{ user.email }}</td>
-                <td>{{ user.surname }}</td>
-                <td>{{ user.forname  }}</td>
-                <td>{{ user.nbPersonne }}</td>
+                <td>{{ partner.name}}</td>
+                <td>{{ partner.description|raw}}</td>
                 <td>
-                    <a href="{{ path('admin_user_edit', {
-                        id: user.id
+                   {{ partner.typeReduction }}
+                </td>
+
+                <td>
+                    <a href="{{ path('admin_partner_edit', {
+                        id: partner.id
                     }) }}">
                         <span class="fa fa-pencil"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('admin_user_delete', {
-                        id: user.id
+                    <a href="{{ path('admin_partner_delete', {
+                        id: partner.id
                     }) }}">
                         <span class="fa fa-trash"></span>
                     </a>
@@ -48,3 +49,4 @@
         </tbody>
     </table>
 {% endblock %}
+

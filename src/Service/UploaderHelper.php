@@ -18,6 +18,7 @@ class UploaderHelper
     const ARTICLE_REFERENCE = 'article_reference';
     const TICKET_IMAGE='tickets';
     const PVCE_PDF='pvcses';
+    const PARTNER_IMAGE='partners';
 
     /**
      * @var RequestStackContext
@@ -142,6 +143,23 @@ class UploaderHelper
         if ($existingFilename) {
             try {
                 $result = $this->filesystem->delete(self::PVCE_PDF.'/'.$existingFilename);
+                if ($result === false) {
+                    throw new \Exception(sprintf('Impossible de supprimer le fichier "%s"', $existingFilename));
+                }
+            } catch (FileNotFoundException $e) {
+                $this->logger->alert(sprintf('Old uploaded file "%s" was missing when trying to delete', $existingFilename));
+            }
+        }
+
+        return  $newFilename;
+    }
+    public function uploadPartnerImage(File $file,?string $existingFilename):string
+    {
+
+        $newFilename=$this->uploadFile($file,self::PARTNER_IMAGE,true);
+        if ($existingFilename) {
+            try {
+                $result = $this->filesystem->delete(self::PARTNER_IMAGE.'/'.$existingFilename);
                 if ($result === false) {
                     throw new \Exception(sprintf('Impossible de supprimer le fichier "%s"', $existingFilename));
                 }

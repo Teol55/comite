@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Pvce;
+use App\Form\ContactFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\PvceRepository;
@@ -11,6 +12,7 @@ use App\Repository\TicketRepository;
 use App\Repository\ToolRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -34,15 +36,7 @@ class ComiteController extends AbstractController
             'pvce' => $pvce
         ]);
     }
-    /**
-     * @Route("/contact", name="app_contact")
-     */
-    public function contact()
-    {
-        return $this->render('comite/contact.html.twig', [
-            'controller_name' => 'ComiteController',
-        ]);
-    }
+
     /**
      * @Route("/articles/{slug}",name="app_articles")
      */
@@ -97,7 +91,46 @@ class ComiteController extends AbstractController
             'tools' => $tools
         ]);
     }
+    /**
+     * @Route("/contact", name="app_contact")
+     */
+    public function contact(Request $request,\Swift_Mailer $swift_Mailer)
+    {
 
+
+        $form = $this->createForm(ContactFormType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $formMessage=$form->getData();
+
+
+                $message = (new \Swift_Message('Confirmation de Commande'))
+                    ->SetFrom($formMessage["emailContact"])
+                    ->setTo('m.ch5500@gmail.com')
+                    ->setBody($this->renderView('comite/emailContact.html.twig',
+                        ['message' => $formMessage['messageContact'],
+                            'nom'=>$formMessage['nameContact'],
+                            'email'=>$formMessage['emailContact']
+                        ]), 'text/html');
+                $swift_Mailer->send($message);
+
+
+
+            $this->addFlash('success', 'Votre message a bien été envoyé');
+            return $this->redirectToRoute('app_homepage',[
+
+            ]);
+        }
+
+        return $this->render('comite/contact.html.twig', [
+            'contactForm' => $form->createView(),
+            'title'=>'Contact'
+
+        ]);
+    }
 }
 
 

@@ -40,7 +40,8 @@ import 'tinymce/plugins/link';
 
 // Initialize the app
 tinymce.init({
-    selector: 'textarea',
+    selector: 'textarea#js-textarea',
+    language: 'fr_FR',
 
 
     plugins: ['paste', 'link']

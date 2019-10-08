@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Service\UploaderHelper;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -87,5 +88,9 @@ class Partner
         $this->pathImage = $pathImage;
 
         return $this;
+    }
+    public function getImagePath()
+    {
+        return UploaderHelper::PARTNER_IMAGE.'/'.$this->getPathImage();
     }
 }

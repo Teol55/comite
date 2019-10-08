@@ -14,7 +14,7 @@
             {% for partner in partners  %}
 
                 <div class="col-md-4 ticket__offer">
-                    <img class="img-fluid" src="uploads/partner_image/{{partner.pathImage}}">
+                    <img class="img-fluid" src="{{uploaded_asset(partner.imagePath)}}">
                     <div class="ticket__offer__title" >{{ partner.name}}</div>
                     <div class="ticket__offer__circle"><br>{{ partner.typeReduction}} </div>
                 </div>

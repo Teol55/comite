@@ -78,4 +78,19 @@ class ToolAdminController extends AbstractController
             'toolForm' => $form->createView()
         ]);
     }
+    /**
+     * @Route("/admin/tool/delete/{id}", name="admin_tool_delete")
+     * IsGranted("ROLE_ADMIN_ARTICLE")
+     */
+    public function delete(Tool $tool, Request $request, EntityManagerInterface $em)
+    {
+        /** @var Tool $tool*/
+        $em->remove($tool);
+        $em->flush();
+        $this->addFlash('success', 'L\'a bien été supprimé');
+        return $this->redirectToRoute('admin_tool_list', [
+
+        ]);
+
+    }
 }
