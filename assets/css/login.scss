@@ -26,3 +26,10 @@ body {
 .btn-google{
   border-color: #0b2e13;
 }
+@media screen and (max-width: 576px) {
+
+h1{
+  padding-top:2em;
+  font-size:1em ;
+}
+}
