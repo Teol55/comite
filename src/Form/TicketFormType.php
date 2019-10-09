@@ -23,11 +23,11 @@ class TicketFormType extends AbstractType
         $builder
             ->add('title',TextType::class)
             ->add('description',null,[
-                'label'=> 'Déscription du billet:'
+                'label'=> 'Description du billet:'
             ])
 
             ->add('priceCE',TextType::class,[
-                'label'=> 'Prix du Billets:'
+                'label'=> 'Prix du Billet:'
             ])
 
         ;

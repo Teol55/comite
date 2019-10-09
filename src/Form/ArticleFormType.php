@@ -23,12 +23,12 @@ class ArticleFormType extends AbstractType
 
         $builder
             ->add('title', TextType::class,[
-                'label' =>'Titre de l\'article',
+                'label' =>'Titre de l\'article:',
                 'help'=> 'Titre de l\'article'
                      ])
 
             ->add('content',null,[
-                'label' => 'Contenu de l\'article'
+                'label' => 'Contenu de l\'article :'
                      ])
             ->add('publishedAt',DateType::class,[
                  'label'=>'Date de Publication:',

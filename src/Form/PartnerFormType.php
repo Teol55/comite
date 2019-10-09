@@ -23,7 +23,7 @@ class PartnerFormType extends AbstractType
                 'label'=> 'Nom du partenaire:'
             ])
             ->add('description',null,[
-                'label'=> 'Déscription du Partenaire:'
+                'label'=> 'Description du Partenaire:'
             ])
             ->add('typeReduction',TextType::class,[
                 'label'=> 'Inscrire le type de réduction:'
