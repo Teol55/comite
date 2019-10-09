@@ -92,7 +92,7 @@ class PvceAdminController extends AbstractController
             if($uploadedFile) {
                 $newFilename=$uploaderHelper->uploadPvcePdf($uploadedFile,$pvce->getPdfFilename());
 
-                $pvce->getPdfFilename($newFilename);
+                $pvce->setPdfFilename($newFilename);
             }
 
             $em->persist($pvce);
