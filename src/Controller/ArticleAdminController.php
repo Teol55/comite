@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 
+use App\Entity\ArticleReference;
 use App\Form\ArticleFormType;
+use App\Repository\ArticleReferenceRepository;
 use App\Repository\ArticleRepository;
 use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
@@ -120,15 +122,33 @@ class ArticleAdminController extends AbstractController
                 $uploadedFile->move($destination,
                     $newFilename);
         }
+
     /**
      * @Route("/admin/article/delete/{id}", name="admin_article_delete")
      * IsGranted("ROLE_ADMIN_ARTICLE")
+     * @throws \Exception
      */
-    public function delete(Article $article, Request $request, EntityManagerInterface $em)
+    public function delete(Article $article, Request $request, EntityManagerInterface $em,UploaderHelper $uploaderHelper)
     {
-                /** @var Article $article */
+        /** @var Article $article */
+//        $references=$repoReference->findBy(['article'=>$article->getId()]);
+//$references=$article->getArticleReferences();
+
+        foreach ($article->getArticleReferences()as $reference){
+
+            /** @var ArticleReference $reference */
+            $this->denyAccessUnlessGranted('ROLE_ADMIN_ARTICLE', $article);
+            $em->remove($reference);
+            $em->flush();
+
+            $uploaderHelper->deleteFile($reference->getFilePath(),false);
+
+        }
+
+
             $em->remove($article);
             $em->flush();
+            $uploaderHelper->deleteFile($article->getImagePath(),true);
             $this->addFlash('success', 'L\'article a bien été supprimé');
             return $this->redirectToRoute('admin_article_list', [
                 'id' => $article->getId(),
