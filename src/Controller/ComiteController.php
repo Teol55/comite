@@ -30,7 +30,7 @@ class ComiteController extends AbstractController
     public function index(ArticleRepository $articleRepos,PvceRepository $pvceRepository)
     {
         $pvce=$pvceRepository->findOneBy([], ['id' => 'desc']);
-        $articles=$articleRepos->findAll();
+        $articles=$articleRepos->findIsPublish();
         return $this->render('comite/index.html.twig', [
             'articles' => $articles,
             'pvce' => $pvce

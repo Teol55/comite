@@ -19,22 +19,22 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    // /**
-    //  * @return Article[] Returns an array of Article objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Article[] Returns an array of Article objects
+      */
+
+    public function findIsPublish()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->Where('a.publishedAt <= :date_start')
+            ->andWhere('a.publishedEnd >= :date_start')
+            ->setParameter('date_start', \DateTime::createFromFormat("Y-m-d H:i:s",date('Y-m-d 00:00:00')))
+//            ->setParameter('date_end',  \DateTime::createFromFormat("Y-m-d H:i:s",date('Y-m-d 23:59:59')))
             ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Article

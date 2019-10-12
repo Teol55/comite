@@ -129,7 +129,18 @@ class Article
     }
     public function isPublished(): bool
     {
-        return $this->publishedAt !== null;
+        $dateToday=date("d-m-Y");
+
+            $datePubishedAt=date_format($this->getPublishedAt(),"d-m-Y");
+        $datePubishedend=date_format($this->getPublishedEnd(),"d-m-Y");
+
+        if(($dateToday >= $datePubishedAt) && ($datePubishedend >= $dateToday))
+        {
+           return true;
+        }
+        else return false;
+
+
     }
 
     public function getPublishedEnd(): ?\DateTimeInterface
