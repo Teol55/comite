@@ -65,6 +65,7 @@ class ArticleAdminController extends AbstractController
     {
 
 
+
         $articles = $articleRepo->findAll();
 
         return $this->render('article_admin/list.html.twig', [

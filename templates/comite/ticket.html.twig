@@ -14,9 +14,11 @@
           {% for ticket in tickets  %}
 
             <div class="col-md-4 ticket__offer">
+                <i class="fas fa-shopping-bag mr-1"></i>
                 <img class="img-fluid" src="{{uploaded_asset(ticket.imagePath)}}">
                 <div class="ticket__offer__title" >  {{ ticket.title }}</div>
                 <div class="ticket__offer__circle"><br>{{ ticket.priceCE }} €</div>
+                <a href="#"class="btn btn-success float-right"><i class="fas fa-shopping-cart mr-1"></i>Ajouter </a>
             </div>
             {% endfor %}
 
