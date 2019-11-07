@@ -25,6 +25,7 @@ Encore
     .addEntry('nav', './assets/js/nav.js')
     .addEntry('pvce', './assets/js/pvce.js')
     .addEntry('admin', './assets/js/admin.js')
+    .addEntry('ticket', './assets/js/ticket.js')
     .addEntry('admin_article_form', './assets/js/admin_article_form.js')
     // .addStyleEntry('account', './assets/css/account.scss')
     .addEntry('login', './assets/js/login.js')

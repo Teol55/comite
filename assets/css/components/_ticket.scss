@@ -1,35 +1,84 @@
 .ticket{
 
 
+  &__offer:hover{
+    border: 4px solid rgba(52, 152, 219,1.0);
+  }
 
   &__offer {
 
-    padding-top: 20px;
+    padding: 0;
     height: 300px;
-
+    background: snow;
     & img {
-
-    height: 100%;
+      -webkit-clip-path: polygon(0 0, 0 60%, 100% 75%, 100% 0);
+      height: 100%;
     width:100%;
+
     }
+    &__row{
+      max-width: 1200px;
+      position: relative;
+      flex-direction: row;
+    }
+
+    &__container{
+position: static;
+       padding-top: 20px;
+
+    z-index: 1;
+       //&:hover{
+       //  border: 1px solid #C4C2C3;
+       //}
+      .ticket__offer__card{
+      //flex-basis: 0;
+      //flex-shrink: 0;
+
+      position: absolute;
+      bottom:0;
+      left: 0;
+      //width: calc(100% - 10px);
+      height: 275px;
+      width: 1200px;
+      padding: 10px 40px;
+      background-color: #2f343b;
+      -webkit-box-shadow: inset 0 5px 25px 0 rgba(0,0,0,.75);
+      box-shadow: inset 0 5px 25px 0 rgba(0,0,0,.75);
+      -webkit-clip-path: polygon(0 0,100% 0,100% 78%,0 100%);
+        transform: none;
+
+      }
+     }
     &__title{
       text-align: center;
-      background-color:whitesmoke ;
-      width: 150px;
-      border-radius: 20px;
+      //background-color:whitesmoke ;
+      //width: 150px;
+      //border-radius: 20px;
       position: relative;
-      top:-270px;
-      left: 80px;
+      top:-70px;
+      left: -70px;
 
         & h4{
           color: black;
         }
+
+    }
+    &__trait{
+      display: block;
+      position: relative;
+      height: 4px;
+      width: 40px;
+      background-color: #33DBE8;
+      top: -60px;
+      left: 40px;
+      border-radius: 30%;
+
     }
     &__circle{
       padding-top: 10px;
-      position: relative;
-      top: -150px;
-      left: 100px;
+      //position: relative;
+      //top: -150px;
+      //left: 100px;
       font-weight: bold;
       height: 100px;
       width: 100px;
@@ -37,6 +86,31 @@
       text-align: center;
       background-color:rgba(230, 126, 34,0.8) ;
     }
+    //&__card{
+    //  flex-basis: 0;
+    //  flex-shrink: 0;
+    //
+    //  position: absolute;
+    //  bottom:0;
+    //  left: 0;
+    //  //width: calc(100% - 10px);
+    //  height: 275px;
+    //  width: 1200px;
+    //  padding: 10px 40px;
+    //  background-color: #2f343b;
+    //  -webkit-box-shadow: inset 0 5px 25px 0 rgba(0,0,0,.75);
+    //  box-shadow: inset 0 5px 25px 0 rgba(0,0,0,.75);
+    //  -webkit-clip-path: polygon(0 0,100% 0,100% 78%,0 100%);
+    //  //-webkit-clip-path: polygon(0% 20%,0 100%,100% 80%,100% 20%,60% 20%,50% 0%,45% 20%);
+    //
+    //}
 
 }
+}
+.ticket__offer__card {
+  display: none;
+}
+
+.test__offer--active .ticket__offer__spacer {
+  height: 315px;
 }

@@ -7,23 +7,40 @@
     <div class="row justify-content-center site__title">
         <h1>{{ title|upper }}</h1>
     </div>
-
-        <div class="row">
+<div class="ticket__container">
+        <div class="row ticket__offer__row ">
 
 
           {% for ticket in tickets  %}
 
-            <div class="col-md-4 ticket__offer">
-                <i class="fas fa-shopping-bag mr-1"></i>
+
+
+            <div class="col-md-4 ticket__offer__container" style="flex-grow: 1;">
+            <div class="ticket__offer">
+
                 <img class="img-fluid" src="{{uploaded_asset(ticket.imagePath)}}">
-                <div class="ticket__offer__title" >  {{ ticket.title }}</div>
-                <div class="ticket__offer__circle"><br>{{ ticket.priceCE }} €</div>
-                <a href="#"class="btn btn-success float-right"><i class="fas fa-shopping-cart mr-1"></i>Ajouter </a>
+                <div class="ticket__offer__title" > <strong>{{ ticket.title }}</strong> </div>
+                <span class="ticket__offer__trait"></span>
             </div>
+                <div class="ticket__offer__spacer"></div>
+                <div id="ticket__offer__card" class="ticket__offer__card">
+                    <div class="ticket__offer__circle"><br>{{ ticket.priceCE }} €</div>
+                <a href="#"class="btn btn-success float-right"><i class="fa fa-shopping-cart mr-1"></i>Ajouter </a>
+            </div></div>
+
+            {% if loop.index % 3 == 0 %}
+        </div><div class="row ticket__offer__row ">
+
+    {% endif %}
+
             {% endfor %}
 
-
+        </div>
         </div>
         </div>
 
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+        {{ encore_entry_script_tags('ticket') }}
+    {% endblock %}
