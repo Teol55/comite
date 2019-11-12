@@ -133,6 +133,7 @@
 
                       }
                       &__description{
+                        min-height: 30px;
                         height: 80px;
                         padding-top: 10px;
 
@@ -145,7 +146,10 @@
                       }
                       &__redirection{
                         font-size: 20px;
-                        text-decoration: none;
+                        a{
+                          text-decoration: none;
+                        }
+
                       }
       }
 }
@@ -218,7 +222,7 @@
           }
        &__button{
          position: absolute;
-         bottom: 120px;
+         top: 70%;
          right: 20px;
        }
         }
