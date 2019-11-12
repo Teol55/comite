@@ -6,6 +6,7 @@ use App\Entity\Partner;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
@@ -27,6 +28,10 @@ class PartnerFormType extends AbstractType
             ])
             ->add('typeReduction',TextType::class,[
                 'label'=> 'Inscrire le type de réduction:'
+            ])
+            ->add('url',UrlType::class,[
+                'label'=> 'Url du site:',
+
             ])
 
         ;
