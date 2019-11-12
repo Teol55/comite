@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
@@ -29,7 +30,10 @@ class TicketFormType extends AbstractType
             ->add('priceCE',TextType::class,[
                 'label'=> 'Prix du Billet:'
             ])
+            ->add('url',UrlType::class,[
+                'label'=> 'Url du site:',
 
+            ])
         ;
         $imageConstraints=[new Image([
             'maxSize' => '5M'

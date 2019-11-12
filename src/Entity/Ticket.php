@@ -42,6 +42,11 @@ class Ticket
      */
     private $ligneRequest;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $url;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -115,5 +120,17 @@ class Ticket
     public function getImagePath()
     {
         return UploaderHelper::TICKET_IMAGE.'/'.$this->getImage();
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }

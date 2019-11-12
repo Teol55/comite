@@ -31,7 +31,7 @@
                     <div class="ticket__cardBox__prize"><span>Tarif : {{ ticket.priceCE }}€</span></div>
                     <div class="ticket__cardBox__description">{{ ticket.description|raw }}</div>
                     <a class="ticket__cardBox__close"><span>X</span></a>
-                     <div class="ticket__cardBox__redirection"><a href="#">Voir le site <i class="fa fa-chevron-circle-right fa-1x"></i> </a> </div>
+                     <div class="ticket__cardBox__redirection"><a href="{{ticket.url}}">Voir le site <i class="fa fa-chevron-circle-right fa-1x"></i> </a> </div>
                     <div class="ticket__cardBox__button">
                     <a href="#"class="btn btn-success float-right"><i class="fa fa-shopping-cart mr-1"></i>Ajouter </a>
                     </div>
